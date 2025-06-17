@@ -14,11 +14,14 @@
 
     <main>
         <p>Ini adalah halaman utama aplikasi booking Anda. Silakan mulai membangun di sini!</p>
-        <!-- Konten aplikasi akan ditambahkan di sini -->
+        <!-- Tambahkan tombol login di sini -->
+        <div class="login-section">
+            <button id="loginButton" class="login-btn">Login ke Dashboard</button>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Aplikasi Booking Kendaraan Kelompok</p>
+        <p>&copy; 2025 Aplikasi Booking Kendaraan Kelompok 1</p>
     </footer>
 
     <!-- Menghubungkan file JavaScript eksternal -->

@@ -5,11 +5,14 @@
 
 /* Contoh kecil untuk memastikan CSS terhubung */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif; /* Menggunakan Inter sebagai font utama */
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4; /* Warna latar belakang sangat ringan */
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Memastikan body mengisi tinggi viewport */
 }
 
 header {
@@ -30,6 +33,38 @@ main {
     padding: 20px;
     border-radius: 8px; /* Sudut membulat */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sedikit bayangan */
+    flex-grow: 1; /* Agar main mengisi ruang kosong */
+    text-align: center; /* Untuk menengahkan konten */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Memusatkan konten secara vertikal */
+    align-items: center; /* Memusatkan konten secara horizontal */
+}
+
+.login-section {
+    margin-top: 30px;
+}
+
+.login-btn {
+    background-color: #28a745; /* Warna hijau untuk tombol login */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transisi saat hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk tombol */
+}
+
+.login-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px); /* Efek sedikit naik saat hover */
+}
+
+.login-btn:active {
+    transform: translateY(0); /* Efek saat diklik */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 
 footer {

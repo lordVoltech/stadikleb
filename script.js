@@ -1,8 +1,15 @@
 //
 // Ini adalah file JavaScript Anda.
-// Saat ini kosong, Anda bisa menambahkan fungsionalitas di sini nanti.
+// Saat ini digunakan untuk mengarahkan tombol login.
 //
-// Contoh: Menampilkan pesan di konsol saat halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Aplikasi Booking Kendaraan siap!');
+
+    const loginButton = document.getElementById('loginButton');
+    if (loginButton) {
+        loginButton.addEventListener('click', () => {
+            // Mengarahkan pengguna ke halaman dashboard
+            window.location.href = 'dashboard.html';
+        });
+    }
 });
