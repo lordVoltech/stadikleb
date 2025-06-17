@@ -1,3 +1,23 @@
+<?php
+// PHP block for handling login and redirection
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // In a real application, you would perform user authentication here.
+    // For demonstration, we'll just check if email and password were sent.
+    if (isset($_POST['email']) && isset($_POST['password'])) {
+        // Simulate a successful login for any input
+        // After successful authentication, redirect the user
+        header("Location: src/index.php");
+        exit(); // It's crucial to exit after a header redirect
+    } else {
+        // Handle cases where email or password are not provided in the POST request
+        // For a real application, you might show an error message
+        // For this example, we'll just let the page reload or display the form again.
+        // Or you could redirect back to login.php with an error parameter:
+        // header("Location: login.php?error=missing_credentials");
+        // exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +77,8 @@
             
             <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">Selamat Datang Kembali</h1>
             
-            <form id="loginForm" class="space-y-6">
+            <!-- Added method="POST" to the form -->
+            <form id="loginForm" class="space-y-6" method="POST">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email atau Username</label>
                     <div class="relative">
@@ -149,24 +170,25 @@
                 }
             });
             
+            // The JavaScript form submission logic is now handled by PHP.
+            // We only need to ensure the form has method="POST".
+            // The event listener below is no longer needed for redirection, but keeping it
+            // if you wish to perform client-side validation before PHP takes over.
             const loginForm = document.getElementById('loginForm');
             loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+                // Prevent default form submission only if you want client-side validation
+                // and then manually submit the form via fetch or XHR.
+                // For a simple PHP redirect, you want the default form submission to occur.
+                // e.preventDefault(); // Uncomment this if you want to handle submission purely via JS.
                 
-                // Get form values
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const rememberMe = document.getElementById('remember-me').checked;
-                
-                // Here you would typically send this data to your server
-                console.log('Login attempt with:', { email, password, rememberMe });
-                
-                // Simulate a successful login
-                setTimeout(() => {
-                    alert('Login berhasil! Selamat datang kembali.');
-                    // In a real app, you would redirect to the dashboard
-                    // window.location.href = '/dashboard';
-                }, 1000);
+                // If client-side validation fails, you would preventDefault() and show errors.
+                // If validation passes, you would allow the default submission or manually submit.
+
+                // No client-side redirection needed, PHP handles it.
+                // console.log('Login attempt with:', { email, password, rememberMe });
+                // setTimeout(() => {
+                //     alert('Login berhasil! Selamat datang kembali.');
+                // }, 1000);
             });
         });
     </script>
