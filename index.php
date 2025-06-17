@@ -53,7 +53,8 @@
                 <a href="#contact" class="hover:text-blue-300 transition duration-300">Kontak</a>
             </div>
             
-            <button class="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition duration-300 hidden md:block">
+            <!-- Tombol "Book Sekarang" di navigasi atas -->
+            <button id="bookNowNav" class="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition duration-300 hidden md:block">
                 Book Sekarang
             </button>
             
@@ -69,7 +70,8 @@
                 <a href="#services" class="hover:text-blue-300 transition duration-300 py-1">Layanan</a>
                 <a href="#about" class="hover:text-blue-300 transition duration-300 py-1">Tentang Kami</a>
                 <a href="#contact" class="hover:text-blue-300 transition duration-300 py-1">Kontak</a>
-                <button class="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition duration-300 w-full">
+                <!-- Tombol "Book Sekarang" di menu mobile -->
+                <button id="bookNowMobile" class="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition duration-300 w-full">
                     Book Sekarang
                 </button>
             </div>
@@ -95,11 +97,13 @@
                 Booking service dan maintenance kendaraan premium Anda kini lebih mudah, cepat, dan mewah.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-md transition duration-300 font-medium">
+                <!-- Tombol "Jelajahi Layanan Kami" di Hero Section -->
+                <button id="jelajahiLayanan" class="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 rounded-md transition duration-300 font-medium">
                     Jelajahi Layanan Kami
                 </button>
-                <button class="border-2 border-white hover:bg-white hover:bg-opacity-10 text-white px-8 py-3 rounded-md transition duration-300 font-medium">
-                    Mulai Sekarang
+                <!-- Tombol "Mulai Sekarang" di Hero Section, diubah menjadi "Book Sekarang" -->
+                <button id="bookNowHero" class="border-2 border-white hover:bg-white hover:bg-opacity-10 text-white px-8 py-3 rounded-md transition duration-300 font-medium">
+                    Book Sekarang
                 </button>
             </div>
         </div>
@@ -316,8 +320,9 @@
             <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                 Jadwalkan kunjungan Anda sekarang dan rasakan perbedaan layanan premium kami.
             </p>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md transition duration-300 font-medium text-lg">
-                Reservasi Sekarang
+            <!-- Tombol "Reservasi Sekarang" di CTA Section, diubah menjadi "Book Sekarang" -->
+            <button id="reservasiSekarang" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-md transition duration-300 font-medium text-lg">
+                Book Sekarang
             </button>
         </div>
     </section>
@@ -464,7 +469,7 @@
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
                     <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Sitemap</a>
+                    <a href="#" class="text-400 hover:text-white transition duration-300">Sitemap</a>
                 </div>
             </div>
         </div>
@@ -559,6 +564,23 @@
                     }
                 }
             });
+        });
+
+        // Menambahkan event listener untuk tombol-tombol yang akan redirect ke login.php
+        document.getElementById('bookNowNav').addEventListener('click', function() {
+            window.location.href = 'login.php';
+        });
+
+        document.getElementById('bookNowMobile').addEventListener('click', function() {
+            window.location.href = 'login.php';
+        });
+
+        document.getElementById('bookNowHero').addEventListener('click', function() {
+            window.location.href = 'login.php';
+        });
+
+        document.getElementById('reservasiSekarang').addEventListener('click', function() {
+            window.location.href = 'login.php';
         });
     </script>
 </body>
