@@ -40,7 +40,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             
-           <?php include 'main.php'; ?>
+           <?php include 'main-content.php'; ?>
 
 
           </div>
