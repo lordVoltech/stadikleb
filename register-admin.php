@@ -1,30 +1,29 @@
 <?php
-session_start(); // Memulai sesi untuk penggunaan variabel $_SESSION
-require 'config.php'; // Pastikan path ke config.php sudah benar
+require '../config.php'; // Pastikan path ke config.php sudah benar
+
+// Inisialisasi variabel untuk pesan feedback
+$register_message = "";
+$message_type = ""; // 'success' atau 'error'
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST["email"]);
-    $password = $_POST["password"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-    $result = $conn->query("SELECT * FROM users WHERE email='$email'");
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        // Memverifikasi password
-        if (password_verify($password, $user["password"])) {
-            $_SESSION["login"] = true;
-            $_SESSION["id"] = $user["id"];
-            $_SESSION["email"] = $user["email"];
-            $_SESSION["nama"] = $user["nama"];
-            // Redirect ke halaman booking setelah login berhasil
-            header("Location: src/booking/index.php"); // Pastikan path ini benar
-            exit;
-        } else {
-            // Password tidak cocok
-            $login_error = "Password salah!";
-        }
+    // Cek apakah email sudah terdaftar di tabel admin
+    $check_email = $conn->query("SELECT * FROM admin WHERE email='$email'");
+
+    if ($check_email->num_rows > 0) {
+        $register_message = "Email ini sudah terdaftar sebagai Admin!";
+        $message_type = "error";
     } else {
-        // Email tidak ditemukan
-        $login_error = "Email tidak terdaftar!";
+        $insert_query = "INSERT INTO admin (email, password) VALUES ('$email', '$password')";
+        if ($conn->query($insert_query) === TRUE) {
+            $register_message = "Registrasi Admin berhasil. Silakan <a href='login.php' class='font-semibold text-indigo-900 hover:underline'>Login Admin</a>"; // Asumsi login admin ke login.php
+            $message_type = "success";
+        } else {
+            $register_message = "Error: " . $insert_query . "<br>" . $conn->error;
+            $message_type = "error";
+        }
     }
 }
 ?>
@@ -34,8 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Motors | Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Luxury Motors | Register Admin</title> <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -43,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #191970; /* Midnight Blue */
         }
         
-        .login-container {
+        .register-container {
             backdrop-filter: blur(5px);
         }
         
@@ -52,12 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 0 0 2px rgba(25, 25, 112, 0.2);
         }
         
-        .btn-login:hover {
+        .btn-register:hover {
             background-color: #121258;
             transform: translateY(-1px);
         }
         
-        .btn-login:active {
+        .btn-register:active {
             transform: translateY(0);
         }
         
@@ -66,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         @media (max-width: 640px) {
-            .login-box {
+            .register-box {
                 width: 90%;
                 padding: 1.5rem;
             }
@@ -74,8 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-    <div class="login-container absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-        <div class="login-box bg-white rounded-xl shadow-xl p-8 w-full max-w-md transition-all duration-300">
+    <div class="register-container absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div class="register-box bg-white rounded-xl shadow-xl p-8 w-full max-w-md transition-all duration-300">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -85,38 +83,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             
-            <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">Selamat Datang Kembali</h1>
-            
-            <?php
-            // Menampilkan pesan error jika login gagal
-            if (isset($login_error)) {
-                echo '<p class="text-red-500 text-center mb-4">' . $login_error . '</p>';
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">Daftar Akun Admin Baru</h1> <?php
+            // Menampilkan pesan registrasi (sukses/gagal)
+            if (!empty($register_message)) {
+                $text_color = ($message_type == "success") ? "text-green-600" : "text-red-500";
+                echo '<p class="' . $text_color . ' text-center mb-4">' . $register_message . '</p>';
             }
             ?>
 
-            <form id="loginForm" class="space-y-6" method="POST">
+            <form id="registerForm" class="space-y-6" method="POST">
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email atau Username</label>
-                    <div class="relative">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Admin</label> <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-7.5a.75.75 0 00-1.5 0v2.25H13a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H19a.75.75 0 000-1.5h-2.25V8.25z" />
                             </svg>
                         </div>
-                        <input type="text" id="email" name="email" placeholder="Masukkan email atau username Anda" required
+                        <input type="email" id="email" name="email" placeholder="Masukkan alamat email admin" required
                                class="input-field w-full pl-10 pr-3 py-3 rounded-lg border border-gray-300 focus:border-indigo-900 focus:ring-1 focus:ring-indigo-900 transition duration-200">
                     </div>
                 </div>
                 
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                    <div class="relative">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password Admin</label> <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
                         </div>
-                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required
+                        <input type="password" id="password" name="password" placeholder="Buat password admin" required
                                class="input-field w-full pl-10 pr-3 py-3 rounded-lg border border-gray-300 focus:border-indigo-900 focus:ring-1 focus:ring-indigo-900 transition duration-200">
                         <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -127,20 +122,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-900 focus:ring-indigo-900 border-gray-300 rounded">
-                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">Ingat saya</label>
-                    </div>
-                    
-                    <div class="text-sm">
-                        <a href="#" class="font-medium text-gray-500 hover:text-indigo-900 link-hover transition duration-200">Lupa kata sandi?</a>
-                    </div>
-                </div>
-                
                 <div>
-                    <button type="submit" class="btn-login w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-indigo-900 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 transition duration-200">
-                        Masuk
+                    <button type="submit" class="btn-register w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-indigo-900 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 transition duration-200">
+                        Daftar Admin
                     </button>
                 </div>
             </form>
@@ -151,15 +135,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="w-full border-t border-gray-300"></div>
                     </div>
                     <div class="relative flex justify-center text-sm">
-                        <span class="px-2 bg-white text-gray-500">Belum punya akun?</span>
-                    </div>
+                        <span class="px-2 bg-white text-gray-500">Sudah punya akun Admin?</span> </div>
                 </div>
                 
                 <div class="mt-6">
-                    <a href="register.php" class="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 transition duration-200">
-                        Daftar di sini
-                    </a>
-                </div>
+                    <a href="login.php" class="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-900 transition duration-200">
+                        Masuk Admin di sini
+                    </a> </div>
             </div>
             
             <div class="mt-8 text-center text-xs text-gray-500">
