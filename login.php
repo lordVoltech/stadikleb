@@ -172,27 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />';
                 }
             });
-            
-            // The JavaScript form submission logic is now handled by PHP.
-            // We only need to ensure the form has method="POST".
-            // The event listener below is no longer needed for redirection, but keeping it
-            // if you wish to perform client-side validation before PHP takes over.
-            const loginForm = document.getElementById('loginForm');
-            loginForm.addEventListener('submit', function(e) {
-                // Prevent default form submission only if you want client-side validation
-                // and then manually submit the form via fetch or XHR.
-                // For a simple PHP redirect, you want the default form submission to occur.
-                // e.preventDefault(); // Uncomment this if you want to handle submission purely via JS.
-                
-                // If client-side validation fails, you would preventDefault() and show errors.
-                // If validation passes, you would allow the default submission or manually submit.
-
-                // No client-side redirection needed, PHP handles it.
-                // console.log('Login attempt with:', { email, password, rememberMe });
-                // setTimeout(() => {
-                //     alert('Login berhasil! Selamat datang kembali.');
-                // }, 1000);
-            });
+        
         });
     </script>
 </body>
