@@ -1,5 +1,5 @@
 <?php
-require '../config.php'; // Pastikan path ke config.php sudah benar
+require 'config.php'; // Pastikan path ke config.php sudah benar
 
 // Inisialisasi variabel untuk pesan feedback
 $register_message = "";
