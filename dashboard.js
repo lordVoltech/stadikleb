@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutButton.addEventListener('click', () => {
             // Untuk saat ini, kita hanya menampilkan alert dan mengarahkan kembali ke halaman utama
             alert('Anda telah logout dari aplikasi.'); // Ganti dengan modal kustom di masa depan
-            window.location.href = 'index.html'; // Kembali ke halaman index/login
+            window.location.href = 'index.php'; // Kembali ke halaman index/login
         });
     }
 
