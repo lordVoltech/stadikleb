@@ -8,7 +8,7 @@ var merge = require('merge-stream');
 
 /* inject partials like sidebar and navbar */
 gulp.task('injectPartial', function () {
-    return gulp.src(["./pages/**/*.html", "./index.php"], {
+    return gulp.src(["./pages/**/*.html", "./index.html"], {
             base: "./"
         })
         .pipe(injectPartials())
@@ -52,13 +52,13 @@ gulp.task('replacePath', function () {
         .pipe(replace('="assets//', '="../assets//'))
         .pipe(replace('href="../pages/', 'href="../../pages/'))
         .pipe(replace('="../docs/', '="../../docs/'))
-        .pipe(replace('href="index.php"', 'href="../index.php"'))
+        .pipe(replace('href="../index.html"', 'href="../../index.html"'))
         .pipe(gulp.dest('.'));
-    var replacePath2 = gulp.src('./index.php', {base: "./"})
-        .pipe(replace('="assets//', '="assets/'))
+    var replacePath2 = gulp.src('./index.html', {base: "./"})
+        .pipe(replace('="../assets/', '="assets/'))
         .pipe(replace('="../docs/', '="docs/'))
         .pipe(replace('="../pages/', '="pages/'))
-        .pipe(replace('="index.php"', '="index.php"'))
+        .pipe(replace('="../index.html"', '="index.html"'))
         .pipe(gulp.dest('.'));
     return merge(replacePath1, replacePath2);
 });
