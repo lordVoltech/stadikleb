@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $insert_query = "INSERT INTO admin (email, password) VALUES ('$email', '$password')";
         if ($conn->query($insert_query) === TRUE) {
-            $register_message = "Registrasi Admin berhasil. Silakan <a href='login.php' class='font-semibold text-indigo-900 hover:underline'>Login Admin</a>"; // Asumsi login admin ke login.php
+            $register_message = "Registrasi Admin berhasil. Silakan <a href='login-admin.php' class='font-semibold text-indigo-900 hover:underline'>Login Admin</a>"; // Asumsi login admin ke login.php
             $message_type = "success";
         } else {
             $register_message = "Error: " . $insert_query . "<br>" . $conn->error;
