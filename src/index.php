@@ -33,13 +33,14 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
-        <<?php include 'partials/_navbar.html'; ?>
+        <?php include 'partials/_navbar.html'; ?>
 
         
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             
+           <?php include 'main.php'; ?>
 
 
           </div>
