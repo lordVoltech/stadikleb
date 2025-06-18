@@ -49,13 +49,13 @@ gulp.task('replacePath', function () {
     var replacePath1 = gulp.src('./pages/**/*.html', {
             base: "./"
         })
-        .pipe(replace('="../assets/', '="../../assets/'))
+        .pipe(replace('="assets//', '="../assets//'))
         .pipe(replace('href="../pages/', 'href="../../pages/'))
         .pipe(replace('="../docs/', '="../../docs/'))
         .pipe(replace('href="index.php"', 'href="../index.php"'))
         .pipe(gulp.dest('.'));
     var replacePath2 = gulp.src('./index.php', {base: "./"})
-        .pipe(replace('="../assets/', '="assets/'))
+        .pipe(replace('="assets//', '="assets/'))
         .pipe(replace('="../docs/', '="docs/'))
         .pipe(replace('="../pages/', '="pages/'))
         .pipe(replace('="index.php"', '="index.php"'))

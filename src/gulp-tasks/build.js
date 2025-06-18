@@ -18,10 +18,10 @@ function CopyAssetsToTheme() {
 
 gulp.task('replacePaths', () => {
     let replacePath1 = gulp.src(['./index.php'], {base: '../dist'})
-        .pipe(replace('="../../assets', '="assets'))
+        .pipe(replace('="../assets/', '="assets'))
         .pipe(gulp.dest('../dist'))
     let replacePath2 = gulp.src(['./pages/**/*.html'], {base: '../dist'})
-        .pipe(replace('="../../../../assets', '="../../assets'))
+        .pipe(replace('="../../../assets/', '="../assets/'))
         .pipe(gulp.dest('../dist'))
     return merge(replacePath1, replacePath2)
 })
