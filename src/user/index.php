@@ -7,6 +7,7 @@ $result = $conn->query("SELECT * FROM users");
                         
 ?>
 
+<?php include '../_header.html'; ?>
   <body>
     <div class="container-scroller">
 
@@ -18,11 +19,10 @@ $result = $conn->query("SELECT * FROM users");
         <!-- partial:_navbar.html -->
         <?php include '../_navbar.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
 
-        
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-            
+  
             <!-- Contoh row dari template, bisa dihapus atau diubah sesuai kebutuhan -->
             <div class="row">
               <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
