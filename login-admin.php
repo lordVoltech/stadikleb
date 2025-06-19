@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             
-            <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">Selamat Datang Kembali</h1>
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">Selamat Datang ADMIN</h1>
             
             <!-- Added method="POST" to the form -->
             <form id="loginForm" class="space-y-6" method="POST">
