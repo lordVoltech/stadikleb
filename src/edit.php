@@ -1,6 +1,6 @@
 <?php
 // Asumsi file ini ada di namaproject/admin/edit-user.php
-require '../../config.php'; // Pastikan path ke config.php sudah benar (dua level ke atas)
+require 'config.php'; // Pastikan path ke config.php sudah benar (dua level ke atas)
 check_login(); // Pastikan fungsi check_login() ada di config.php atau di-include terpisah
 
 // Inisialisasi variabel untuk pesan feedback
@@ -73,22 +73,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user_data) { // Pastikan user_data 
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>LuxuryAuto Admin - Edit User</title> <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/ti-icons/css/themify-icons.css">
-    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/vendors/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="../assets/vendors/flag-icon-css/css/flag-icons.min.css">
-    <link rel="stylesheet" href="../assets/vendors/owl-carousel-2/owl.carousel.min.css">
-    <link rel="stylesheet" href="../assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <title>LuxuryAuto Admin - Edit User</title> <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icons.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
   <body>
     <div class="container-scroller">
 
-      <?php include '../partials/_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
-        <?php include '../partials/_navbar.html'; ?> <div class="main-panel">
+      <?php include '_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
+        <?php include '_navbar.html'; ?> <div class="main-panel">
           <div class="content-wrapper">
             
             <div class="row">
@@ -207,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user_data) { // Pastikan user_data 
                             <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password baru jika ingin mengubah">
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Update Data</button>
-                        <a href="../booking-admin.php" class="btn btn-dark">Kembali ke Daftar Pengguna</a> </form>
+                        <a href="booking-admin.php" class="btn btn-dark">Kembali ke Daftar Pengguna</a> </form>
                     <?php else: ?>
                         <p class="text-center text-danger">Tidak dapat menampilkan form edit karena data pengguna tidak ditemukan atau ID tidak valid.</p>
                     <?php endif; ?>
@@ -218,21 +218,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user_data) { // Pastikan user_data 
 
 
           </div>
-          <?php include '../partials/_footer.html'; ?> </div>
+          <?php include '_footer.html'; ?> </div>
         </div>
       </div>
-    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="../assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="../assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="../assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="../assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <script src="../assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="../assets/js/off-canvas.js"></script>
-    <script src="../assets/js/misc.js"></script>
-    <script src="../assets/js/settings.js"></script>
-    <script src="../assets/js/todolist.js"></script>
-    <script src="../assets/js/proBanner.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/proBanner.js"></script>
+    <script src="assets/js/dashboard.js"></script>
     </body>
 </html>

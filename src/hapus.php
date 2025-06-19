@@ -1,5 +1,5 @@
 <?php
-require '../../config.php';
+require 'config.php';
 check_login();
 
 $id = $_GET["id"];
