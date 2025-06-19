@@ -37,12 +37,12 @@ $result = $conn->query("SELECT * FROM users");
     <div class="container-scroller">
 
       <!-- partial:_sidebar.html -->
-      <?php include 'partials/_sidebar.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
+      <?php include '_sidebar.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
 
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:_navbar.html -->
-        <?php include 'partials/_navbar.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
+        <?php include '_navbar.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
 
         
         <!-- partial -->
@@ -185,7 +185,7 @@ $result = $conn->query("SELECT * FROM users");
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:_footer.html -->
-          <?php include 'partials/_footer.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
+          <?php include '_footer.html'; ?> <!-- Pastikan path ini benar relatif dari lokasi file ini -->
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
