@@ -28,12 +28,12 @@
     <div class="container-scroller">
 
       <!-- partial:partials/_sidebar.html -->
-      <?php include '_sidebar.html'; ?>
+      <?php include '../_sidebar.html'; ?>
 
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
-        <?php include '_navbar.html'; ?>
+        <?php include '../_navbar.html'; ?>
 
         
         <!-- partial -->
@@ -321,7 +321,7 @@
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-          <?php include '_footer.html'; ?>
+          <?php include '../_footer.html'; ?>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
