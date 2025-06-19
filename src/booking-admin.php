@@ -201,10 +201,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_status"])) {
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="empty-filler" style="flex-grow: 1; background-color: #000000; min-height: 20px;"></div> 
           </div>
+          
           <?php include '_footer.html'; ?> </div>
         </div>
       </div>
