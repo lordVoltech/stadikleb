@@ -25111,11 +25111,12 @@ dl li {
   transition: width 0.25s ease, margin 0.25s ease;
   width: 100%;
   min-height: calc(100vh - 70px);
-  padding-top: 10px;
+  padding-top: 0px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  background-color: #000000;
 }
 @media (max-width: 991px) {
   .main-panel {
