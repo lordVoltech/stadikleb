@@ -58,8 +58,8 @@ if (empty($user_id)) {
   <body>
     <div class="container-scroller">
 
-      <?php include '../_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
-        <?php include '../_navbar.html'; ?> <div class="main-panel">
+      <?php include '../partials/_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
+        <?php include '../partials/_navbar.html'; ?> <div class="main-panel">
           <div class="content-wrapper">
             
             <div class="row">
