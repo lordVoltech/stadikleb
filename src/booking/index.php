@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_status"])) {
                         </div>
                       </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">this months reserve</h6>
+                    <h6 class="text-muted font-weight-normal">this month reserve</h6>
                   </div>
                 </div>
               </div>
