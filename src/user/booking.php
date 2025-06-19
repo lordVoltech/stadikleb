@@ -58,8 +58,8 @@ if (empty($user_id)) {
   <body>
     <div class="container-scroller">
 
-      <?php include '../partials/_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
-        <?php include '../partials/_navbar.html'; ?> <div class="main-panel">
+      <?php include '../_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
+        <?php include '../_navbar.html'; ?> <div class="main-panel">
           <div class="content-wrapper">
             
             <div class="row">
@@ -231,7 +231,7 @@ if (empty($user_id)) {
 
 
           </div>
-          <?php include '../partials/_footer.html'; ?> </div>
+          <?php include '../_footer.html'; ?> </div>
         </div>
       </div>
     <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
