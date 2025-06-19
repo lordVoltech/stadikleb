@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_status"])) {
   <body>
     <div class="container-scroller">
 
-      <?php include '../_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
-        <?php include '../_navbar.html'; ?> <div class="main-panel">
+      <?php include '../partials-user/_sidebar.html'; ?> <div class="container-fluid page-body-wrapper">
+        <?php include '../partials-user/_navbar.html'; ?> <div class="main-panel">
           <div class="content-wrapper">
             
             <div class="row">
@@ -210,21 +210,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update_status"])) {
 
 
           </div>
-          <?php include '../_footer.html'; ?> </div>
+          <?php include '../partials-user/_footer.html'; ?> </div>
         </div>
       </div>
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <script src="assets/js/settings.js"></script>
-    <script src="assets/js/todolist.js"></script>
-    <script src="assets/js/proBanner.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="../assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="../assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="../assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="../assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/misc.js"></script>
+    <script src="../assets/js/settings.js"></script>
+    <script src="../assets/js/todolist.js"></script>
+    <script src="../assets/js/proBanner.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
     </body>
 </html>
