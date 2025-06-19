@@ -207,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $user_data) { // Pastikan user_data 
                             <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password baru jika ingin mengubah">
                         </div>
                         <button type="submit" class="btn btn-primary me-2">Update Data</button>
-                        <a href="booking-admin.php" class="btn btn-dark">Kembali ke Daftar Pengguna</a> </form>
+                        <a href="../booking-admin.php" class="btn btn-dark">Kembali ke Daftar Pengguna</a> </form>
                     <?php else: ?>
                         <p class="text-center text-danger">Tidak dapat menampilkan form edit karena data pengguna tidak ditemukan atau ID tidak valid.</p>
                     <?php endif; ?>
